@@ -29,6 +29,11 @@ html: $(HTML)
 
 manifest: $(OUTPUT)/manifest.json
 
+.PHONY: google-drive
+
+google-drive: google-drive-id $(DOCX)
+	common/update-google-drive $(shell cat google-drive-id) $(DOCX)
+
 $(OUTPUT):
 	mkdir -p $(OUTPUT)
 

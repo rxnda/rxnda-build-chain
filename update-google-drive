@@ -1,0 +1,25 @@
+#!/usr/bin/env node
+var suffixes = ['ID', 'SECRET', 'REFRESH_TOKEN']
+suffixes.forEach(function (suffix) {
+  var name = 'GOOGLE_DRIVE_' + suffix
+  if (!process.env[name]) {
+    console.error('Missing ' + name)
+    process.exit(1)
+  }
+})
+
+require('update-google-drive-document')(
+  process.env.GOOGLE_DRIVE_ID,
+  process.env.GOOGLE_DRIVE_SECRET,
+  process.env.GOOGLE_DRIVE_REFRESH_TOKEN,
+  process.argv[2],
+  require('fs').createReadStream(process.argv[3]),
+  function (error) {
+    if (error) {
+      console.error(error)
+      process.exit(1)
+    } else {
+      process.exit(0)
+    }
+  }
+)
