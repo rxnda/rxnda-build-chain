@@ -11,7 +11,7 @@ var description = fs.readFileSync(ID + '.description', 'utf8').trim()
 console.log(JSON.stringify({
   title: ID,
   edition: EDITION,
-  description: description,
+  description: [description],
   repository: 'https://github.com/rxnda/' + ID,
   commonform: commonform,
   directions: directionsFor(commonform),
