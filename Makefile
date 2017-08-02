@@ -81,7 +81,7 @@ clean:
 DOCKER_TAG=rxnda-form
 
 docker:
-	docker build -t $(DOCKER_TAG) .
+	docker build -t $(DOCKER_TAG) -f common/Dockerfile .
 	docker run --name $(DOCKER_TAG) $(DOCKER_TAG)
 	docker cp $(DOCKER_TAG):/workdir/$(OUTPUT) .
 	docker rm $(DOCKER_TAG)
