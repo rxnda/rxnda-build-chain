@@ -13,9 +13,10 @@ PDF=$(OUTPUT)/$(FORM:=.pdf)
 MD=$(OUTPUT)/$(FORM:=.md)
 JSON=$(OUTPUT)/$(FORM:=.json)
 HTML=$(OUTPUT)/$(FORM:=.html)
-TARGETS=$(DOCX) $(PDF) $(MD) $(JSON)
+MANIFEST=$(OUTPUT)/$(FORM:=.manifest)
+TARGETS=$(DOCX) $(PDF) $(MD) $(JSON) $(MANIFEST)
 
-all: docx pdf md json html
+all: docx pdf md json html manifest
 
 docx: $(DOCX)
 
@@ -27,7 +28,7 @@ json: $(JSON)
 
 html: $(HTML)
 
-manifest: $(OUTPUT)/manifest.json
+manifest: $(MANIFEST)
 
 .PHONY: google-drive
 
@@ -58,6 +59,9 @@ endif
 
 $(OUTPUT)/%.json: $(OUTPUT)/%.cform | $(COMMONFORM) $(OUTPUT)
 	$(COMMONFORM) render --format native < $< > $@
+
+$(OUTPUT)/%.manifest: $(OUTPUT)/%.json %.description %.signatures | $(COMMONFORM) $(OUTPUT)
+	common/build-manifest "$*" "$(EDITION)" > $@
 
 %.pdf: %.docx
 	doc2pdf $<
