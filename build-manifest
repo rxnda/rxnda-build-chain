@@ -29,17 +29,20 @@ function directionsFor (commonform) {
   returned[0].label = 'Purpose'
   returned[0].notes = [
     'Describe the reason the parties will ' +
-    'share confidential information.',
-    'For example, ' +
-    '\u201Cdiscussing the purchase of business software\u201D'
+    'share confidential information.'
+  ]
+  returned[0].examples = [
+    'discussing the purchase of business software'
   ]
 
   returned[1].label = 'State'
   returned[1].notes = [
     'Name the state whose law will govern the NDA, and ' +
-    'where the parties will commit to litigate.',
-    'For example, ' +
-    '\u201CCalifornia\u201D or \u201CNew York\u201D '
+    'where the parties will commit to litigate.'
+  ]
+  returned[1].examples = [
+    'California',
+    'New York'
   ]
 
   return returned
