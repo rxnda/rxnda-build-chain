@@ -12,7 +12,7 @@ console.log(JSON.stringify({
   title: ID,
   edition: EDITION,
   published: new Date().toISOString(),
-  description: [description],
+  notes: [description],
   repository: 'https://github.com/rxnda/' + ID,
   commonform: commonform,
   directions: directionsFor(commonform),
