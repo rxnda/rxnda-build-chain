@@ -35,15 +35,5 @@ function directionsFor (commonform) {
     'discussing the purchase of business software'
   ]
 
-  returned[1].label = 'State'
-  returned[1].notes = [
-    'Name the state whose law will govern the NDA, and ' +
-    'where the parties will commit to litigate.'
-  ]
-  returned[1].examples = [
-    'California',
-    'New York'
-  ]
-
   return returned
 }
