@@ -39,16 +39,15 @@ $(OUTPUT):
 	mkdir -p $(OUTPUT)
 
 $(OUTPUT)/%.md: $(OUTPUT)/%.cform | $(COMMONFORM) $(SPELL) $(OUTPUT)
-	$(COMMONFORM) render --format markdown --title "RxNDA Form $*" --edition "$(shell echo "$(EDITION)" | $(SPELL))" < $< > $@
+	$(COMMONFORM) render --format markdown --title "Nondisclosure Agreement" --edition "$(shell echo "$(EDITION)" | $(SPELL))" < $< > $@
 
 $(OUTPUT)/%.html: $(OUTPUT)/%.cform | $(COMMONFORM) $(SPELL) $(OUTPUT)
-	echo "<!doctype html><html lang=en><head><meta charset='UTF-8'><title>TITLE, EDITION</title></head><body>" \
-	| sed 's!TITLE!RxNDA Form $*!' | sed 's!EDITION!$(shell echo "$(EDITION)" | $(SPELL))!' > $@
-	$(COMMONFORM) render --format html5 --title "RxNDA Form $*" --edition "$(shell echo "$(EDITION)" | $(SPELL))" < $< >> $@
+	echo "<!doctype html><html lang=en><head><meta charset='UTF-8'><title>Nondisclosure Agreement</title></head><body>" > $@
+	$(COMMONFORM) render --format html5 --title "Nondisclosure Agreement" --edition "$(shell echo "$(EDITION)" | $(SPELL))" < $< >> $@
 	echo '</body></html>' >> $@
 
 $(OUTPUT)/%.docx: $(OUTPUT)/%.cform %.signatures | $(COMMONFORM) $(SPELL) $(OUTPUT)
-	$(COMMONFORM) render --format docx --blank-text "$(BLANK)" --title "RxNDA Form $*" --edition "$(shell echo "$(EDITION)" | $(SPELL))" --indent-margins --number outline --signatures $*.signatures < $< > $@
+	$(COMMONFORM) render --format docx --blank-text "$(BLANK)" --title "Nondisclosure Agreement" --edition "$(shell echo "$(EDITION)" | $(SPELL))" --indent-margins --number outline --signatures $*.signatures < $< > $@
 
 $(OUTPUT)/%.cform: %.cftemplate | $(CFTEMPLATE) $(OUTPUT)
 ifeq ($(EDITION),Development Draft)
