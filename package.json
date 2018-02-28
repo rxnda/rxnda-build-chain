@@ -5,7 +5,7 @@
     "commonform-analyze": "^1.0.0",
     "commonform-cli": "^0.27.0",
     "reviewers-edition-spell": "^2.0.0",
-    "run-parallel": "^1.1.6",
+    "run-parallel": "^1.1.7",
     "update-google-drive-document": "^0.1.0"
   }
 }
